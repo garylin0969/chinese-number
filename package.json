@@ -1,0 +1,38 @@
+{
+    "name": "chinese-number",
+    "version": "1.0.0",
+    "description": "中文數字轉換Chinese numeral conversion",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "test": "jest"
+    },
+    "keywords": [
+        "台灣",
+        "中華民國",
+        "中华人民共和国",
+        "數字轉中文",
+        "数字转中文",
+        "中文轉數字",
+        "中文转数字",
+        "繁體字",
+        "简体字",
+        "Taiwan",
+        "Chinese",
+        "number",
+        "numeral",
+        "format",
+        "conversion"
+    ],
+    "author": {
+        "name": "Gary Lin",
+        "email": "garylin0969@gmail.com"
+    },
+    "license": "ISC",
+    "devDependencies": {
+        "@types/jest": "^29.5.11",
+        "jest": "^29.7.0",
+        "ts-jest": "^29.1.1",
+        "typescript": "^5.3.3"
+    }
+}
