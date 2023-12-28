@@ -1,6 +1,6 @@
 {
     "name": "chinese-number-format",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "中文數字轉換Chinese numeral conversion",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
