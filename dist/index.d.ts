@@ -8,4 +8,9 @@ interface Options {
     precision?: number;
 }
 declare function toChineseApproximate(num: number, options?: Options): string;
-export { toChinese, toChineseWithUnits, toChineseApproximate, toNumber, toUpperCase, type Options };
+interface MonthOptions {
+    locale?: Locales;
+    format?: 'traditional' | 'simple';
+}
+declare function toChineseMonth(month: number, options?: MonthOptions): string;
+export { toChinese, toChineseWithUnits, toChineseApproximate, toNumber, toUpperCase, toChineseMonth, type Locales, type Options, type MonthOptions, };

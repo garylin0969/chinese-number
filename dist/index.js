@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toUpperCase = exports.toNumber = exports.toChineseApproximate = exports.toChineseWithUnits = exports.toChinese = void 0;
+exports.toChineseMonth = exports.toUpperCase = exports.toNumber = exports.toChineseApproximate = exports.toChineseWithUnits = exports.toChinese = void 0;
 // 基本數字映射
 const NUMBER_MAPS = {
     base: {
@@ -214,3 +214,28 @@ function toChineseApproximate(num, options = {}) {
     return integerPart + decimalPart + unit;
 }
 exports.toChineseApproximate = toChineseApproximate;
+// 新增：將數字轉換為中文月份
+function toChineseMonth(month, options = {}) {
+    const { locale = 'zh-TW', format = 'simple' } = options;
+    // 檢查月份範圍
+    if (month < 1 || month > 12 || !Number.isInteger(month)) {
+        return '';
+    }
+    // 正月、臘月等特殊月份名稱
+    const traditionalMonths = {
+        'zh-TW': ['正', '二', '三', '四', '五', '六', '七', '八', '九', '十', '冬', '臘'],
+        'zh-CN': ['正', '二', '三', '四', '五', '六', '七', '八', '九', '十', '冬', '腊'],
+    };
+    if (format === 'traditional') {
+        return traditionalMonths[locale][month - 1] + '月';
+    }
+    // 處理簡單格式的特殊情況
+    if (month === 10) {
+        return '十月';
+    }
+    else if (month > 10) {
+        return '十' + toChinese(month % 10, locale) + '月';
+    }
+    return toChinese(month, locale) + '月';
+}
+exports.toChineseMonth = toChineseMonth;

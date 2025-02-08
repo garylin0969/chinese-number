@@ -1,4 +1,11 @@
-import { toChinese, toChineseWithUnits, toNumber, toUpperCase, toChineseApproximate } from '../src/index';
+import {
+    toChinese,
+    toChineseWithUnits,
+    toNumber,
+    toUpperCase,
+    toChineseApproximate,
+    toChineseMonth,
+} from '../src/index';
 
 describe('toChinese 函數', () => {
     test('應該將整數轉換為中文字 (繁體)', () => {
@@ -135,5 +142,29 @@ describe('toUpperCase 函數', () => {
     test('應該保留非數字字符', () => {
         expect(toUpperCase('abc123')).toBe('abc123');
         expect(toUpperCase('測試123')).toBe('測試123');
+    });
+});
+
+describe('toChineseMonth 函數', () => {
+    test('應該正確轉換月份 (簡單格式)', () => {
+        expect(toChineseMonth(1)).toBe('一月');
+        expect(toChineseMonth(12)).toBe('十二月');
+    });
+
+    test('應該正確轉換月份 (繁體傳統格式)', () => {
+        expect(toChineseMonth(1, { format: 'traditional' })).toBe('正月');
+        expect(toChineseMonth(12, { format: 'traditional' })).toBe('臘月');
+    });
+
+    test('應該正確轉換月份 (簡體傳統格式)', () => {
+        expect(toChineseMonth(1, { locale: 'zh-CN', format: 'traditional' })).toBe('正月');
+        expect(toChineseMonth(12, { locale: 'zh-CN', format: 'traditional' })).toBe('腊月');
+    });
+
+    test('應該處理無效輸入', () => {
+        expect(toChineseMonth(0)).toBe('');
+        expect(toChineseMonth(13)).toBe('');
+        expect(toChineseMonth(1.5)).toBe('');
+        expect(toChineseMonth(-1)).toBe('');
     });
 });
